@@ -16,7 +16,10 @@ function generatePin() {
 }
 
 // btn hander generated
+
 document.getElementById("generate-btn").addEventListener("click", function () {
+
+
   const generatedFinalPin = getPin();
   gettingInput('generated-pin-here',generatedFinalPin)
 });
@@ -56,6 +59,7 @@ const dontMathched= document.getElementById('dontMathched');
 mathched.style.display='none';
 dontMathched.style.display='none';
 //after submit action
+let clicked = 3;
 document.getElementById('sumitBtn').addEventListener('click', function(){
     const gettingTheGeneratedPin = document.getElementById("generated-pin-here");
     const typedPinDisplay = document.getElementById('typed-pin-display');
@@ -64,8 +68,22 @@ document.getElementById('sumitBtn').addEventListener('click', function(){
         mathched.style.display='block';
         dontMathched.style.display='none';
     }
+    
     else{
+     
+    
+          clicked--;
+          if (clicked === 0) {
+              document.location.reload();
+          }
+          else{
+              document.getElementById('try-again').innerText = clicked;
+          }
+      
+
         dontMathched.style.display='block';
         mathched.style.display='none';
     }
 })
+
+//add 3 times attempts
